@@ -6,4 +6,4 @@ set number	"line numbers
 set autoindent
 filetype plugin indent on
 
-"comment: loading the vimcfg file worked using the loadcfg.sh script!
+
