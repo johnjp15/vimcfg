@@ -9,7 +9,7 @@ filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-set expandtab   "this sets vimt o use spaces instead of tabs; use for Amazon
+set expandtab	"this sets vim to uses spaces instead of tab; use for Amazon
 
 set backspace=indent,eol,start
 
@@ -18,3 +18,6 @@ set term=screen-256color
 set t_ut=
 
 set hlsearch
+
+" enables scrolling when vim is on an ssh connection
+set mouse=a
