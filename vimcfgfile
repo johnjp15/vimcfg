@@ -1,5 +1,5 @@
 syntax enable
-colorscheme monokai
+colorscheme minimalist
 set number	"line numbers
 
 "indentation
