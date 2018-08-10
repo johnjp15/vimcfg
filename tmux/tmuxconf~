@@ -57,12 +57,3 @@ set -g status-fg colour15
 #set -g status-right '#[fg=colour233,bg=colour19,bold] %d/%m #[fg=colour233,bg=colour8,bold] %H:%M:%S '
 #set -g status-right-length 50
 #set -g status-left-length 20
-
-
-# copy paste
-bind P paste-buffer
-bind-key -T copy-mode-vi v send-keys -X begin-selection
-bind-key -T copy-mode-vi y send-keys -X copy-selection
-bind-key -T copy-mode-vi r send-keys -X rectangle-toggle
-
-
