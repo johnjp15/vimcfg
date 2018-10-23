@@ -14,10 +14,19 @@ set expandtab	"this sets vim to uses spaces instead of tab; use for Amazon
 set backspace=indent,eol,start
 
 set term=xterm-256color
-set term=screen-256color
+"set term=screen-256color
 set t_ut=
 
 set hlsearch
 
 " enables scrolling when vim is on an ssh connection
 set mouse=a
+
+set nocompatible
+
+vmap <C-c> y:new ~/.vimbuffer<CR>VGp:x<CR> \| :!cat ~/.vimbuffer \| clip.exe <CR><CR>
+map <C-v> :r ~/.vimbuffer<CR>
+
+set diffopt=horizontal
+
+autocmd FilterWritePre * if &diff | setlocal wrap< | endif
