@@ -24,7 +24,7 @@ vmap <C-c> y:new ~/.vimbuffer<CR>VGp:x<CR> \| :!cat ~/.vimbuffer \| clip.exe <CR
 map <C-v> :r ~/.vimbuffer<CR>
 
 " Set vimdiff split to horizontal instead of vertical
-set diffopt=horizontal
+" set diffopt=horizontal
 
 " Force wrapping while keeping diff highlighting
 " Source:
