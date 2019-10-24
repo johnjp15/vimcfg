@@ -1,32 +1,33 @@
-syntax enable
-colorscheme minimalist
-set number	"line numbers
+syntax enable                   " Enable syntax highlighting
+colorscheme minimalist          " Use minimalist color scheme
+set number	                    " Enable line numbers
 
-"indentation
-set autoindent
+set autoindent                  " Enable indentation
 filetype plugin indent on
 
-set tabstop=4
+set tabstop=4                   " Set indentation width
 set shiftwidth=4
 set softtabstop=4
-set expandtab	"this sets vim to uses spaces instead of tab; use for Amazon
+set expandtab                   " Use spaces instead of tabs
 
-set backspace=indent,eol,start
+set backspace=indent,eol,start  " Fix backspacing
 
-set term=xterm-256color
-"set term=screen-256color
+set term=xterm-256color         " Fix colors depending on terminal type
 set t_ut=
 
-set hlsearch
+set hlsearch                    " Highlight all when using find (i.e. /word)
+set mouse=a                     " Enables scrolling when vim is on an ssh connection
+set nocompatible                " Use full viM features, not just vi
 
-" enables scrolling when vim is on an ssh connection
-set mouse=a
-
-set nocompatible
-
+" Enables copy and pasting from a buffer file
 vmap <C-c> y:new ~/.vimbuffer<CR>VGp:x<CR> \| :!cat ~/.vimbuffer \| clip.exe <CR><CR>
 map <C-v> :r ~/.vimbuffer<CR>
 
-set diffopt=horizontal
+" Set vimdiff split to horizontal instead of vertical
+" set diffopt=horizontal
 
+" Force wrapping while keeping diff highlighting
+" Source:
+" https://stackoverflow.com/questions/16840433/forcing-vimdiff-to-wrap-lines
 autocmd FilterWritePre * if &diff | setlocal wrap< | endif
+
