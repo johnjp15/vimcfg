@@ -1,33 +1,41 @@
-syntax enable                   " Enable syntax highlighting
-colorscheme minimalist          " Use minimalist color scheme
-set number	                    " Enable line numbers
+syntax enable
+colorscheme minimalist
+set number	"line numbers
 
-set autoindent                  " Enable indentation
+"indentation
+set autoindent
 filetype plugin indent on
 
-set tabstop=4                   " Set indentation width
+set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-set expandtab                   " Use spaces instead of tabs
+set expandtab	"this sets vim to uses spaces instead of tab; use for Amazon
 
-set backspace=indent,eol,start  " Fix backspacing
+set backspace=indent,eol,start
 
-set term=xterm-256color         " Fix colors depending on terminal type
+set term=xterm-256color
+"set term=screen-256color
 set t_ut=
 
-set hlsearch                    " Highlight all when using find (i.e. /word)
-set mouse=a                     " Enables scrolling when vim is on an ssh connection
-set nocompatible                " Use full viM features, not just vi
+set hlsearch
 
-" Enables copy and pasting from a buffer file
+" enables scrolling when vim is on an ssh connection
+set mouse=a
+
+set nocompatible
+
 vmap <C-c> y:new ~/.vimbuffer<CR>VGp:x<CR> \| :!cat ~/.vimbuffer \| clip.exe <CR><CR>
 map <C-v> :r ~/.vimbuffer<CR>
 
-" Set vimdiff split to horizontal instead of vertical
 " set diffopt=horizontal
 
-" Force wrapping while keeping diff highlighting
-" Source:
-" https://stackoverflow.com/questions/16840433/forcing-vimdiff-to-wrap-lines
 autocmd FilterWritePre * if &diff | setlocal wrap< | endif
+
+set tabpagemax=100
+
+
+" CTAGS "
+set tags=./tags;/
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
