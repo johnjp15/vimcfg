@@ -45,10 +45,8 @@ bind -n WheelUpPane if-shell -F -t = "#{mouse_any_flag}" "send-keys -M" "if -Ft=
 
 
 # pane border colors
-set -g pane-border-bg colour0
-set -g pane-border-fg colour8
-set -g pane-active-border-bg colour0
-set -g pane-active-border-fg colour31
+set -g pane-border-style 'bg=#1f1e1e fg=colour8'
+set -g pane-active-border-style 'bg=#1f1e1e fg=colour31'
 
 # statusbar
 #set -g status-position bottom
