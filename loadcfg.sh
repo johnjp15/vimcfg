@@ -1,18 +1,25 @@
-#/bin/bash
-
-#vimcfgdir=$(pwd)
+#!/bin/bash
+set -euo pipefail
 
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 
-#ls $vimcfgdir 
-mkdir -p ~/.vim/colors
-gcp $SCRIPTPATH/vimcfgfile ~/.vimrc -b
-gcp -rfb $SCRIPTPATH/colors ~/.vim/
-# \gcp $SCRIPTPATH/monokai.vim ~/.vim/colors -b
-# \gcp $SCRIPTPATH/carbonized.vim ~/.vim/colors -b
-echo "Loaded configuration files from $SCRIPTPATH"
+# Copy src to dest, backing up an existing dest to dest~ (like GNU cp -b).
+# Works with BSD cp on macOS, which has no -b option.
+backup_cp() {
+    local src="$1" dest="$2"
+    if [ -e "$dest" ] && ! cmp -s "$src" "$dest"; then
+        command cp -f "$dest" "$dest~"
+    fi
+    command cp -f "$src" "$dest"
+}
 
+mkdir -p ~/.vim/colors
+backup_cp "$SCRIPTPATH/vimcfgfile" ~/.vimrc
+for f in "$SCRIPTPATH"/colors/*.vim; do
+    backup_cp "$f" ~/.vim/colors/"$(basename "$f")"
+done
+echo "Loaded vim configuration from $SCRIPTPATH"
 
 TMUXPATH="$SCRIPTPATH/tmux"
-
-gcp -b $TMUXPATH/tmuxconf ~/.tmux.conf
+backup_cp "$TMUXPATH/tmuxconf" ~/.tmux.conf
+echo "Loaded tmux configuration from $TMUXPATH"
